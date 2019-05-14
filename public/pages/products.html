@@ -1,1 +1,10 @@
 <h1>Produtos</h1>
+<a href="/produtos/criar">Criar novo produto</a>
+
+
+<h4>Lista de Produto</h4>
+<ul>
+    {loop="$products"}
+    <li><a href="/products/{$value.id}">{$value.name}</a></li>
+    {/loop}
+</ul>

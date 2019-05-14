@@ -1,29 +1,28 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HE
- * Date: 14/05/2019
- * Time: 10:00
- */
-
 namespace classes;
 
+use PHPMailer\PHPMailer\Exception;
 
 class Product
 {
-    public function create_product($name,$price,$description)
+    public function create_product($name, $price, $description)
     {
-        $bank = new Bank();
-        $bank->query("INSERT INTO products (name,price,description) VALUES (:NAME,:PRICE,:DESCRIPTION)",array(
-            ':NAME' => $name,
-            ':PRICE' => $price,
-            ':DESCRIPTION' => $description
-        ));
-    }
+        //echo "$name - $price - $description";
 
-    public function list_products()
-    {
-        $bank = new Bank();
-        return $bank->select("SELECT * FROM products");
+        $bank = new \classes\Bank();
+        try
+        {
+            $bank->query("INSERT INTO products (name_product, price, description) VALUES (:NAME_PRODUCT ,:PRICE, DESCRIPTION);",array(
+                ":NAME_PRODUCT" => $name,
+                ":PRICE" => $price,
+                ":DESCRIPTION" => $description
+            ));
+        }catch (\Exception $exception)
+        {
+            throw new \Exception("Aconteceu um erro: ".$exception->getMessage());
+        }
+
     }
 }
+
+?>

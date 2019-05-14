@@ -1,12 +1,12 @@
-DROP DATABASE projectSite;
-CREATE DATABASE projectSite;
-USE projectSite;
+
+CREATE DATABASE project_site;
+USE project_site;
 
 CREATE TABLE products (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(150) NOT NULL,
-    value DOUBLE(5,2) NOT NULL,
-    description VARCHAR(200),
+    name_product VARCHAR(150) NOT NULL,
+    price DOUBLE(6,2) NOT NULL,
+    description VARCHAR(200) NOT NULL,
     date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )ENGINE = innodb;
 
@@ -39,6 +39,8 @@ CREATE TABLE address (
 
 ALTER TABLE person ADD CONSTRAINT `fk_person_id` FOREIGN KEY ( id ) REFERENCES users( id ) ;
 ALTER TABLE address ADD CONSTRAINT `fk_address_id` FOREIGN KEY ( id ) REFERENCES users( id ) ;
+
+INSERT INTO products (name,price,description) VALUES ('Xperia',1200.00,'Celular Sony Xperia C4');
 
 
 
