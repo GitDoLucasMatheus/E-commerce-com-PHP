@@ -3,8 +3,28 @@
 
 
 <h4>Lista de Produto</h4>
-<ul>
+<table>
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Nome</td>
+            <td>Preço</td>
+            <td>Descrição</td>
+            <td>Opções</td>
+        </tr>
+    </thead>
+    <tbody>
     {loop="$products"}
-    <li><a href="/products/{$value.id}">{$value.name}</a></li>
+        <tr>
+            <td>{$value.id}</td>
+            <td>{$value.name_product}</td>
+            <td>R$ {$value.price}</td>
+            <td>{$value.description}</td>
+            <td><a href="/produtos/excluir/{$value.id}">X</a> <a href="/produtos/editar/{$value.id}">Editar</a></td>
+        </tr>
     {/loop}
+    </tbody>
+</table>
+
+
 </ul>
